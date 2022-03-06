@@ -3,7 +3,7 @@ package drivers;
 import pages.CommonPage;
 import pages.HomePage;
 
-public class pageInitializer extends Driver {
+public class PageInitializer extends Driver {
 	public static CommonPage cp;
 	public static HomePage myHPage;
 

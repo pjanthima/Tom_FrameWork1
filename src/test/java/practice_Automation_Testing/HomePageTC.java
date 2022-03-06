@@ -1,4 +1,4 @@
-package Practice_Automation_Testing;
+package practice_Automation_Testing;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import drivers.Driver;
 import methods.CommonMethods;
 import utilities.PropertiesReader;
 
-public class homePage extends CommonMethods {
+public class HomePageTC extends CommonMethods {
 	@BeforeMethod
 	public void beforeTest() {
 //	1) Open the browser
@@ -39,6 +39,6 @@ public class homePage extends CommonMethods {
 		int actualNumOfSlider = numOfSliders.size();
 		System.out.println("Number of slider are " + actualNumOfSlider);
 		Assert.assertTrue(actualNumOfSlider == 3, "Please check sliders size");
-
+		//Hello
 	}
 }

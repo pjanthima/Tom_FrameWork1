@@ -26,7 +26,7 @@ public class Driver {
 				driver.get(PropertiesReader.getProperty("url"));
 				driver.manage().timeouts().implicitlyWait(Constants.IMPLICIT_WAIT_TIME, TimeUnit.SECONDS);
 				driver.manage().window().maximize();
-				pageInitializer.initialize();
+				PageInitializer.initialize();
 				break;
 
 			case "chrome":
@@ -35,7 +35,7 @@ public class Driver {
 				driver.get(PropertiesReader.getProperty("url"));
 				driver.manage().timeouts().implicitlyWait(Constants.IMPLICIT_WAIT_TIME, TimeUnit.SECONDS);
 				driver.manage().window().maximize();
-				pageInitializer.initialize();
+				PageInitializer.initialize();
 				break;
 
 			case "safari":
@@ -45,7 +45,7 @@ public class Driver {
 				// maximize
 				driver.manage().window().maximize();
 				driver.manage().timeouts().implicitlyWait(Constants.IMPLICIT_WAIT_TIME, TimeUnit.SECONDS);
-				pageInitializer.initialize();
+				PageInitializer.initialize();
 				break;
 
 			}

@@ -17,7 +17,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import drivers.Driver;
 
-public class browserUtilities {
+public class BrowserUtilities {
 	/*
 	 * switches to new window by the exact title
 	 */
