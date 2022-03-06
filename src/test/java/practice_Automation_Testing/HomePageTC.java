@@ -20,7 +20,7 @@ public class HomePageTC extends CommonMethods {
 		Driver.getDriver();
 	}
 
-	@Test
+	@Test(enabled = false)
 	public void threeSlidersOnly() throws InterruptedException {
 //	3) Click on Shop Menu
 		cp.shopTab.click();
@@ -39,6 +39,23 @@ public class HomePageTC extends CommonMethods {
 		int actualNumOfSlider = numOfSliders.size();
 		System.out.println("Number of slider are " + actualNumOfSlider);
 		Assert.assertTrue(actualNumOfSlider == 3, "Please check sliders size");
-		//Hello
+
+	}
+
+	@Test
+	public void threeArrivalsOnly() throws InterruptedException {
+//	3) Click on Shop Menu
+		cp.shopTab.click();
+//	4) Now click on Home menu button
+		cp.homeTab.click();
+//	5) Test whether the Home page has Three Arrivals only
+		scrollDown(700);
+		Thread.sleep(3000);
+//	6) The Home page must contains only three Arrivals
+		List<WebElement> list = Driver.getDriver()
+				.findElements(By.xpath(PropertiesReader.getProperty("numberOfArrivals")));
+		int numOfArrivals = list.size();
+		System.out.println("Number of Arrival are " + numOfArrivals);
+		Assert.assertTrue(numOfArrivals == 3, "Please verify arrivals size");
 	}
 }
