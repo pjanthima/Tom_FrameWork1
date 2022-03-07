@@ -13,7 +13,7 @@ import utilities.Constants;
 import utilities.PropertiesReader;
 
 public class Driver {
-	public static WebDriver driver;
+	private static WebDriver driver;
 
 	public static WebDriver getDriver() {
 		if (driver == null) {

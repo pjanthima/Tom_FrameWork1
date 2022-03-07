@@ -17,4 +17,5 @@ public class CommonPage {
 	public WebElement myAccountTab;
 	@FindBy(xpath = "//nav[@class='woocommerce-breadcrumb']/a")
 	public WebElement homeTab;
+
 }
