@@ -6,8 +6,8 @@
       <class name="practice_Automation_Testing.HomePageTC">
         <methods>
           <include name="beforeTest"/>
-          <include name="arrivalsImagesDescription"/>
           <include name="tearDown"/>
+          <include name="TC006_arrivalsImageAddToBasket"/>
         </methods>
       </class> <!-- practice_Automation_Testing.HomePageTC -->
     </classes>

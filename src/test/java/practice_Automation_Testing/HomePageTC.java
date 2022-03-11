@@ -1,9 +1,6 @@
 package practice_Automation_Testing;
 
-import java.util.List;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -58,7 +55,7 @@ public class HomePageTC extends CommonMethods {
 //	6) The Home page must contains only three Arrivals
 		scrollDown(700);
 		Thread.sleep(3000);// visual purpose
-		verifyThreeArrivals();
+		myHPage.verifyThreeArrivals();
 	}
 
 	@Test(enabled = false)
@@ -71,7 +68,7 @@ public class HomePageTC extends CommonMethods {
 //	6) The Home page must contains only three Arrivals
 		scrollDown(700);
 		Thread.sleep(3000);// visual purpose
-		verifyThreeArrivals();
+		myHPage.verifyThreeArrivals();
 //	7) Now click the image in the Arrivals
 		myHPage.imageClickable.click();
 //	8) Test whether it is navigating to next page where the user can add that book into his basket.
@@ -90,7 +87,7 @@ public class HomePageTC extends CommonMethods {
 //	5) Test whether the Home page has Three Arrivals only
 //	6) The Home page must contains only three Arrivals
 		scrollDown(700);
-		verifyThreeArrivals();
+		myHPage.verifyThreeArrivals();
 //	7) Now click the image in the Arrivals
 		myHPage.imageClickable.click();
 //	8) Test whether it is navigating to next page where the user can add that book into his basket.
@@ -120,7 +117,7 @@ public class HomePageTC extends CommonMethods {
 //	5) Test whether the Home page has Three Arrivals only
 //	6) The Home page must contains only three Arrivals
 		scrollDown(700);
-		verifyThreeArrivals();
+		myHPage.verifyThreeArrivals();
 //	7) Now click the image in the Arrivals
 		myHPage.imageClickable.click();
 //	8) Test whether it is navigating to next page where the user can add that book into his basket.
@@ -135,12 +132,64 @@ public class HomePageTC extends CommonMethods {
 		System.out.println("TEST PASSED : " + myHPage.productReviews.getText());
 	}
 
-	public void verifyThreeArrivals() {
-		List<WebElement> list = Driver.getDriver()
-				.findElements(By.xpath(PropertiesReader.getProperty("numberOfArrivals")));
-		int numOfArrivals = list.size();
-		int expectedNumOfArrivals = 3;
-		Assert.assertTrue(numOfArrivals == expectedNumOfArrivals, "Please verify arrivals size");
-		System.out.println("Number of Arrival are " + numOfArrivals);
+	@Test(enabled = false)
+	public void TC006_arrivalsImageAddToBasket() throws InterruptedException {
+//	3) Click on Shop Menu
+		cp.shopTab.click();
+//	4) Now click on Home menu button
+		cp.homeTab.click();
+//	5) Test whether the Home page has Three Arrivals only
+//	6) The Home page must contains only three Arrivals
+		scrollDown(700);
+		myHPage.verifyThreeArrivals();
+//	7) Now click the image in the Arrivals
+		myHPage.imageClickable.click();
+//	8) Test whether it is navigating to next page where the user can add that book into his basket.
+//	9) Image should be clickable and shoul navigate to next page where user can add that book to his basket
+		Assert.assertTrue(myHPage.addToBasketButton.isDisplayed());
+		System.out.println("TEST PASSED : " + myHPage.addToBasketButton.getText());
+//	10) Click on the Add To Basket button which adds that book to your basket
+		myHPage.addToBasketButton.click();
+		Assert.assertTrue(myHPage.addBasketMessage.isDisplayed());
+		System.out.println("TEST PASSED : " + myHPage.addBasketMessage.getText());
+//	11) User can view that Book in the Menu item with price.
+		cp.menuItemTab.click();
+		String actualTitle = Driver.getDriver().getTitle();
+		String expectedTitle = PropertiesReader.getProperty("basketTitlePage");
+		Assert.assertEquals(actualTitle, expectedTitle);
+		System.out.println("TEST PASSED : " + actualTitle);
+//	12) User can add a book by clicking on Add To Basket button which adds that book in to his Basket
 	}
+
+	public void TC007_arrivalsAddToBasketWithMoreBooks() {
+//		3) Click on Shop Menu
+		cp.shopTab.click();
+//		4) Now click on Home menu button
+		cp.homeTab.click();
+//		5) Test whether the Home page has Three Arrivals only
+//		6) The Home page must contains only three Arrivals
+		scrollDown(700);
+		myHPage.verifyThreeArrivals();
+//		7) Now click the image in the Arrivals
+		myHPage.imageClickable.click();
+//		8) Test whether it is navigating to next page where the user can add that book into his basket.
+//		9) Image should be clickable and shoul navigate to next page where user can add that book to his basket
+		Assert.assertTrue(myHPage.addToBasketButton.isDisplayed());
+		System.out.println("TEST PASSED : " + myHPage.addToBasketButton.getText());
+//		10) Click on the Add To Basket button which adds that book to your basket
+		myHPage.addToBasketButton.click();
+		Assert.assertTrue(myHPage.addBasketMessage.isDisplayed());
+		System.out.println("TEST PASSED : " + myHPage.addBasketMessage.getText());
+//		11) User can view that Book in the Menu item with price.
+		cp.menuItemTab.click();
+		String actualTitle = Driver.getDriver().getTitle();
+		String expectedTitle = PropertiesReader.getProperty("basketTitlePage");
+		Assert.assertEquals(actualTitle, expectedTitle);
+		System.out.println("TEST PASSED : " + actualTitle);
+//	12) User can add a book by clicking on Add To Basket button which adds that book in to his Basket
+//	13) Select more books than the books in stock.Ex if the stock has 20 books, try to add 21.
+//	14) Click the add to basket button
+//	15) Now it throws an error prompt like you must enter a value between 1 and 20
+	}
+
 }
